@@ -1,9 +1,21 @@
 const sumAll = function (...numbers) {
-  const sum = numbers.reduce((previous, next) => previous + next);
-  console.log(sum);
+  let sum = 0;
+  const min = Math.min(...numbers);
+  const max = Math.max(...numbers);
+
+  if (min < 0) {
+    return "ERROR";
+  } else if (min % 1 != 0 || max % 1 != 0) {
+    return "ERROR";
+  } else if (numbers.some((num) => typeof num !== "number")) {
+    return "ERROR";
+  } else {
+    for (let i = min; i <= max; i++) {
+      sum += i;
+    }
+    return sum;
+  }
 };
 
-sumAll(1, 4);
-
 // Do not edit below this line
-// module.exports = sumAll;
+module.exports = sumAll;
