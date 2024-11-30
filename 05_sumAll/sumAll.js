@@ -3,13 +3,23 @@ const sumAll = function (...numbers) {
   const min = Math.min(...numbers);
   const max = Math.max(...numbers);
 
+  //if min is a negative number
   if (min < 0) {
     return "ERROR";
-  } else if (min % 1 != 0 || max % 1 != 0) {
+  }
+
+  //if some of the array elements in ...numbers are not numbers
+  else if (numbers.some((num) => typeof num !== "number")) {
     return "ERROR";
-  } else if (numbers.some((num) => typeof num !== "number")) {
+  }
+
+  //if some of the array elements in ...numbers are not integers
+  else if (numbers.some((num) => !Number.isInteger(num))) {
     return "ERROR";
-  } else {
+  }
+
+  //run code if no errors
+  else {
     for (let i = min; i <= max; i++) {
       sum += i;
     }
