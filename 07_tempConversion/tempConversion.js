@@ -10,9 +10,6 @@ const convertToFahrenheit = function (tempInC) {
   // console.log(fahrenheit.toFixed(1));
 };
 
-convertToCelsius(0);
-convertToFahrenheit(0);
-
 // Do not edit below this line
 module.exports = {
   convertToCelsius,
