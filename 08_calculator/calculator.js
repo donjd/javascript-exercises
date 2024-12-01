@@ -13,12 +13,14 @@ const subtract = function (...numbers) {
 };
 
 function sum(numbers) {
-  let total = 0;
-
-  total = numbers.reduce((prev, next) => {
-    return prev + next;
-  });
-  return total;
+  if (numbers.length == 0) {
+    return 0;
+  } else {
+    const total = numbers.reduce((prev, next) => {
+      return prev + next;
+    });
+    return total;
+  }
 }
 
 const multiply = function (numbers) {
@@ -28,11 +30,21 @@ const multiply = function (numbers) {
   return total;
 };
 
-const power = function () {};
+const power = function (num, pow) {
+  return Math.pow(num, pow);
+};
 
-const factorial = function () {};
-
-// console.log(sum([]));
+const factorial = function (number) {
+  let total = 1;
+  if (number == 0) {
+    return 1;
+  } else {
+    for (i = 1; i <= number; i++) {
+      total *= i;
+    }
+    return total;
+  }
+};
 
 // // Do not edit below this line
 module.exports = {
