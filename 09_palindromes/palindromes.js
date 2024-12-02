@@ -28,7 +28,9 @@ const palindromes = function (string) {
     "z",
   ];
   const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const acceptableChars = ALPHABET.join(DIGITS);
+  const acceptableChars = ALPHABET.concat(
+    DIGITS.map((element) => element.toString())
+  );
   let chars = string
     .toLowerCase()
     .split("")
@@ -41,8 +43,6 @@ const palindromes = function (string) {
     .reverse()
     .reduce((prev, curr) => prev + curr);
 
-  console.log(chars);
-  console.log(reversedChars);
   if (chars == reversedChars) {
     return true;
   } else {
@@ -52,5 +52,3 @@ const palindromes = function (string) {
 
 // Do not edit below this line
 module.exports = palindromes;
-
-console.log(palindromes("a car, a man, a maraca"));
