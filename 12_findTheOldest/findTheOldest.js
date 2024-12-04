@@ -16,24 +16,47 @@ const people = [
   },
 ];
 
-const findTheOldest = function (people) {
-  let today = new Date();
-  const getAge = function (person) {
-    if (person.yearOfDeath === undefined) {
-      return today.getTime() - person.yearOfBirth.getTime();
-    } else {
-      return person.yearOfDeath.getTime() - person.yearOfBirth.getTime();
-    }
-  };
+const peopleWithAge = people.map((person) => ({
+  ...person,
+  age: getAge(person),
+}));
 
-  const oldestAge = people
-    .map(getAge)
-    .reduce((curr, next) => Math.max(curr, next));
+function getAge(person) {
+  const today = new Date().getTime();
+  const birthYear = new Date(person.yearOfBirth).getTime();
+  const deathYear = new Date(person.yearOfDeath).getTime();
+  if (deathYear === undefined) {
+    return today - birthYear;
+  } else {
+    return deathYear - birthYear;
+  }
+}
 
-  const oldestPerson = console.log(oldestAge);
-};
+console.log(peopleWithAge[2].age);
 
-findTheOldest(people);
+// const findTheOldest = function (people) {
+//   const getAge = function (person) {
+//     let today = new Date().getTime();
+//     const birthYear = new Date(person.yearOfBirth).getTime();
+//     const deathYear = new Date(person.yearOfDeath).getTime();
+//     if (deathYear === undefined) {
+//       return today - birthYear;
+//     } else {
+//       return deathYear - birthYear;
+//     }
+//   };
+
+//   const peopleWithAge = people.map((person) => {
+//     name: person.name;
+//     yearOfBirth: person.yearOfBirth;
+//     yearOfDeath: person.yearOfDeath;
+//     age: getAge(person);
+//   });
+
+//   console.log(peopleWithAge);
+// };
+
+// findTheOldest(people);
 
 // Do not edit below this line
-module.exports = findTheOldest;
+// module.exports = findTheOldest;
